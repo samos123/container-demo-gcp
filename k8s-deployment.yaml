@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: container-demo-deployment
+  labels:
+    app: container-demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: container-demo
+  template:
+    metadata:
+      labels:
+        app: container-demo
+    spec:
+      containers:
+      - name: container-demo
+        image: gcr.io/sam-playground-123/container-demo-gcp
+        ports:
+        - containerPort: 8080
